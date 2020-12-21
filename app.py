@@ -3,12 +3,13 @@ from flask import Flask, request, jsonify, abort
 import json
 from flask_cors import CORS
 import traceback
-
+from auth import requires_auth, AuthError
 
 # def create_app(test_config=None):
 app = Flask(__name__)
 setup_db(app)
 CORS(app, resources={"/": {"origins": "*"}})
+
 
 @app.route('/')
 def hello():
@@ -17,7 +18,8 @@ def hello():
 
 # @TODO GET Actors
 @app.route('/actors', methods=['GET'])
-def get_actors():
+@requires_auth('get:actors')
+def get_actors(jwt):
     try:
         actors = Actor.query.order_by(Actor.id).all()
         formatted_actors = [actor.format() for actor in actors]
@@ -31,9 +33,11 @@ def get_actors():
         traceback.print_exc()
         abort(422)
 
+
 # @TODO GET Movies
 @app.route('/movies', methods=['GET'])
-def get_movies():
+@requires_auth('get:movies')
+def get_movies(jwt):
     try:
         movies = Movie.query.order_by(Movie.id).all()
         formatted_movies = [movie.format() for movie in movies]
@@ -47,9 +51,11 @@ def get_movies():
         traceback.print_exc()
         abort(422)
 
+
 # @TODO DELETE Actors
 @app.route('/actors/<int:id>', methods=['DELETE'])
-def delete_actors(id):
+@requires_auth('delete:actors')
+def delete_actors(jwt, id):
     try:
         actor = Actor.query.filter(Actor.id == id).one_or_none()
 
@@ -66,9 +72,11 @@ def delete_actors(id):
         traceback.print_exc()
         abort(422)
 
+
 # @TODO DELETE Movies
 @app.route('/movies/<int:id>', methods=['DELETE'])
-def delete_movies(id):
+@requires_auth('delete:movies')
+def delete_movies(jwt, id):
     try:
         movie = Movie.query.filter(Movie.id == id).one_or_none()
 
@@ -85,9 +93,11 @@ def delete_movies(id):
         traceback.print_exc()
         abort(422)
 
+
 # @TODO POST Actors
 @app.route('/actors', methods=['POST'])
-def add_actors():
+@requires_auth('post:actors')
+def add_actors(jwt):
     try:
         body = request.get_json()
 
@@ -110,9 +120,11 @@ def add_actors():
         traceback.print_exc()
         abort(422)
 
+
 # @TODO POST Movies
 @app.route('/movies', methods=['POST'])
-def add_movies():
+@requires_auth('post:movies')
+def add_movies(jwt):
     try:
         body = request.get_json()
 
@@ -136,7 +148,8 @@ def add_movies():
 
 # @TODO PATCH Actors
 @app.route('/actors/<int:id>', methods=['PATCH'])
-def update_actors(id):
+@requires_auth('patch:actors')
+def update_actors(jwt, id):
     try:
         body = request.get_json()
         actor = Actor.query.filter_by(id=id).one_or_none()
@@ -167,9 +180,11 @@ def update_actors(id):
         traceback.print_exc()
         abort(500)
 
+
 # @TODO PATCH Movies
 @app.route('/movies/<int:id>', methods=['PATCH'])
-def update_movies(id):
+@requires_auth('patch:movies')
+def update_movies(jwt, id):
     try:
         body = request.get_json()
         movie = Movie.query.filter_by(id=id).one_or_none()
@@ -196,6 +211,7 @@ def update_movies(id):
         traceback.print_exc()
         abort(500)
 
+
 @app.errorhandler(404)
 def unprocessable(error):
     return jsonify({
@@ -203,6 +219,7 @@ def unprocessable(error):
         "error": 404,
         "message": "Not Found"
     }), 404
+
 
 @app.errorhandler(422)
 def unprocessable(error):
@@ -212,6 +229,7 @@ def unprocessable(error):
         "message": "Unable To Process"
     }), 422
 
+
 @app.errorhandler(500)
 def server_error(error):
     return jsonify({
@@ -219,3 +237,12 @@ def server_error(error):
         "error": 500,
         "message": "Internal server error"
     }), 500
+
+
+@app.errorhandler(AuthError)
+def authentication_error(error):
+    return jsonify({
+        "success": False,
+        "error": error.status_code,
+        "message": error.error['description']
+    }), error.status_code
