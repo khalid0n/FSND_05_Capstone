@@ -21,7 +21,7 @@ class Movie(db.Model):
     __tablename__ = 'movies'
 
     id = Column(Integer, primary_key=True)
-    title = Column(String, unique=True)
+    title = Column(String,)
     release_date = Column(String)
 
     def __init__(self, title, release_date):
