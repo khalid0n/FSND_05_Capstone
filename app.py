@@ -5,16 +5,15 @@ from flask_cors import CORS
 import traceback
 from auth import requires_auth, AuthError
 
+
 def create_app(test_config=None):
     app = Flask(__name__)
     setup_db(app)
     CORS(app, resources={"/": {"origins": "*"}})
 
-
     @app.route('/')
     def hello():
         return "HIIIIIII"
-
 
     # @TODO GET Actors
     @app.route('/actors', methods=['GET'])
@@ -33,7 +32,6 @@ def create_app(test_config=None):
             traceback.print_exc()
             abort(422)
 
-
     # @TODO GET Movies
     @app.route('/movies', methods=['GET'])
     @requires_auth('get:movies')
@@ -50,7 +48,6 @@ def create_app(test_config=None):
         except:
             traceback.print_exc()
             abort(422)
-
 
     # @TODO DELETE Actors
     @app.route('/actors/<int:id>', methods=['DELETE'])
@@ -72,7 +69,6 @@ def create_app(test_config=None):
             traceback.print_exc()
             abort(422)
 
-
     # @TODO DELETE Movies
     @app.route('/movies/<int:id>', methods=['DELETE'])
     @requires_auth('delete:movies')
@@ -92,7 +88,6 @@ def create_app(test_config=None):
         except:
             traceback.print_exc()
             abort(422)
-
 
     # @TODO POST Actors
     @app.route('/actors', methods=['POST'])
@@ -120,7 +115,6 @@ def create_app(test_config=None):
             traceback.print_exc()
             abort(422)
 
-
     # @TODO POST Movies
     @app.route('/movies', methods=['POST'])
     @requires_auth('post:movies')
@@ -144,7 +138,6 @@ def create_app(test_config=None):
         except:
             traceback.print_exc()
             abort(422)
-
 
     # @TODO PATCH Actors
     @app.route('/actors/<int:id>', methods=['PATCH'])
@@ -180,7 +173,6 @@ def create_app(test_config=None):
             traceback.print_exc()
             abort(500)
 
-
     # @TODO PATCH Movies
     @app.route('/movies/<int:id>', methods=['PATCH'])
     @requires_auth('patch:movies')
@@ -211,7 +203,6 @@ def create_app(test_config=None):
             traceback.print_exc()
             abort(500)
 
-
     @app.errorhandler(401)
     def unauthorized(error):
         return jsonify({
@@ -219,7 +210,6 @@ def create_app(test_config=None):
             "error": 401,
             "message": 'Un-Authorized'
         }), 401
-
 
     @app.errorhandler(404)
     def unprocessable(error):
@@ -229,7 +219,6 @@ def create_app(test_config=None):
             "message": "Not Found"
         }), 404
 
-
     @app.errorhandler(422)
     def unprocessable(error):
         return jsonify({
@@ -238,7 +227,6 @@ def create_app(test_config=None):
             "message": "Unable To Process"
         }), 422
 
-
     @app.errorhandler(500)
     def server_error(error):
         return jsonify({
@@ -246,7 +234,6 @@ def create_app(test_config=None):
             "error": 500,
             "message": "Internal server error"
         }), 500
-
 
     @app.errorhandler(AuthError)
     def authentication_error(error):
@@ -258,3 +245,5 @@ def create_app(test_config=None):
 
     return app
 
+
+app = create_app()
