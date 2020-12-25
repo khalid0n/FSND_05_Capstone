@@ -30,9 +30,9 @@ class CapstoneTestCase(unittest.TestCase):
             "release_date": "2010-10"
         }
 
-        self.castingAssistantToken = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlDcllNXzdYc0JMVVBucVZnT2xWZyJ9.eyJpc3MiOiJodHRwczovL2ZzbmQta2hhbGVkLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZmRmNzUxNmVhM2ZjNzAwNzg3NmMxMGYiLCJhdWQiOiJmbnNkX2NhcHN0b25lIiwiaWF0IjoxNjA4NzUyMzMwLCJleHAiOjE2MDg3NTk1MzAsImF6cCI6IkxndU52NE9Qajd0V05lMW92MTJ1WmppT0xvUW54SndRIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyJdfQ.CxFRZIIfT6GA-dGHdkwLcnP1Yl6to_axUDgbKHVVw7FjA1hNujhae3_LbBrK_3MglM9wSVU1L3NX1c8J1fdbZTkPoy3ypjLtqQLa1iS4nUi8WU9ew25VcstWgG120kDbTz5sx29JehjmY6q2rmILYu4eK11ASsQN_CApdGg9twbjDNIkaq1kudF7hH7uqnXN-S3bM8IqIY_Lv6v2MPhLb-B6sKvL1kW7GAeA0xiGCZHr1J7KxA6fod3iyHD6MC1YhRjigAd3p5lLgaGGlUjaZ7v-PJA4gma2sHB0SS-VB-vA49RjfwrcQhzyE1AoPCDDZzRQBV5Mzfozsw9jTcfgKQ'
-        self.castingDirectorToken = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlDcllNXzdYc0JMVVBucVZnT2xWZyJ9.eyJpc3MiOiJodHRwczovL2ZzbmQta2hhbGVkLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZmRmNzU0Yjc4MjM4YjAwNzE5NjVhYmQiLCJhdWQiOiJmbnNkX2NhcHN0b25lIiwiaWF0IjoxNjA4NzUyMzU5LCJleHAiOjE2MDg3NTk1NTksImF6cCI6IkxndU52NE9Qajd0V05lMW92MTJ1WmppT0xvUW54SndRIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZ2V0OmFjdG9ycyIsImdldDptb3ZpZXMiLCJwYXRjaDphY3RvcnMiLCJwYXRjaDptb3ZpZXMiLCJwb3N0OmFjdG9ycyJdfQ.SFtxd8pe0FMx6n3GBE2UDkgpmVTagcmjGYoZuuxtGf7ErLvo4E05-1G3MGB6lbrpjKOXUURCpLpmblMOFHf25ZkNQsjbazla0jFcTTshJusexskv1EmFQVNYfS20lwdM3tQyHEovaCAaJpqYLudWn3yfbzkhBPgGz6snAOx4ZNVuf4bnuqzH8b1AcsuERKjzxAaPR3Sqd_3sT4YNc97jsr8bEmfAsQYZFCUovY-kO6WxUdQYC_yr3JqRTFd5gI5jKt8HF1XY3ogivV6JHnsQpOdWAlaxu99yU4ViLhLmnwh5ZbI_Fy5tVNAIHo1dOfRofznxK-6L9yl8-5d1NbUN-g'
-        self.ExecutiveToken = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlDcllNXzdYc0JMVVBucVZnT2xWZyJ9.eyJpc3MiOiJodHRwczovL2ZzbmQta2hhbGVkLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZmRmNzU2YTA4Mjg0YjAwNmJiNGM4M2UiLCJhdWQiOiJmbnNkX2NhcHN0b25lIiwiaWF0IjoxNjA4NzUyNDA5LCJleHAiOjE2MDg3NTk2MDksImF6cCI6IkxndU52NE9Qajd0V05lMW92MTJ1WmppT0xvUW54SndRIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZGVsZXRlOm1vdmllcyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.XsQNiK_GZziAFGN1uPHUNnA4codqpKQobQ9_u1aQ6-bCMUm9dFEo_og2Q_Ue4RCWUIRe0t1gbmQDb36vau484HBH0es8h2nCEle4Ak29IdfgEzMQ-4GpwbOqSyvUQR7sNhx7QuemkloUSOMDKnfmb5EOJgz4UYdwMI1U6BhJ8gBZFuELtKJCjaQj3ES49OpHs1JTLnHotfG90jrC4MIlCISZch6E9tWSpPhUlIlcaxYr9e5Xb7iZhv72S3L7v8RVpOjPDd3HLcZmAz_Ouot6pisKM3jtCANAeR59rCSsMfFanz0KrQd58F0HBQgzMGQlmMM1Ua5TWCx0HJSw36BKYw'
+        self.castingAssistantToken = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlDcllNXzdYc0JMVVBucVZnT2xWZyJ9.eyJpc3MiOiJodHRwczovL2ZzbmQta2hhbGVkLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZmRmNzUxNmVhM2ZjNzAwNzg3NmMxMGYiLCJhdWQiOiJmbnNkX2NhcHN0b25lIiwiaWF0IjoxNjA4OTEwMTc5LCJleHAiOjE2MDg5MTczNzksImF6cCI6IkxndU52NE9Qajd0V05lMW92MTJ1WmppT0xvUW54SndRIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyJdfQ.EiNhLbBLcOwQAdCIeyC89N0ST2UOy8qTTyNCGkydYSL_VW0AmGftG30NhhqTr44ZzQdg0wAp3bS3yd24-5wEif02C5_M0KxS5WNHcNzCgDH33LW5DZOdgvPkzsOW62hxmjoevdm34pivDCEuVODFHtCf8BAYPqZodPJuq0GFT-OD5-SViMvN5rltcbcj94DvDDFRqiAdSmGC7yvDCsS4C2ZE79dMJLU0IxgNz27a3Mh7M5l0s-VRDDIoF1yAIwMnRs7jgQu5NlfqeLDUfFRdpqvxSpv6m7k6vohLBDd9jQgD-5gcKjUk4MqH3IjqXN6bTnbcy9j-GPtSY5SLa2sumg'
+        self.castingDirectorToken = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlDcllNXzdYc0JMVVBucVZnT2xWZyJ9.eyJpc3MiOiJodHRwczovL2ZzbmQta2hhbGVkLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZmRmNzU0Yjc4MjM4YjAwNzE5NjVhYmQiLCJhdWQiOiJmbnNkX2NhcHN0b25lIiwiaWF0IjoxNjA4OTEwMjIzLCJleHAiOjE2MDg5MTc0MjMsImF6cCI6IkxndU52NE9Qajd0V05lMW92MTJ1WmppT0xvUW54SndRIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZ2V0OmFjdG9ycyIsImdldDptb3ZpZXMiLCJwYXRjaDphY3RvcnMiLCJwYXRjaDptb3ZpZXMiLCJwb3N0OmFjdG9ycyJdfQ.lcmqWaUV0ODpDrlDSO08MEpAmr1LsbSkeWT9ZOYY0_YO1F0uV1nI9ZC0gs1ZnVc7Es53WxefbQEN9u4XvgemXch8epFrQF40Sgf_MDD_4amT7dFFlYsay_CpaT2S125WofRUmX7efHwD9EbH2JEygylNodiq9xJ8ZF4Eq5BKblUDfSbM93IIIFw4sXIHPHXpatcKGMuV7kkgSNgeQ0AvAEYsoZyTEpoRMDSvwWI-Gaq4jJFLrXucgRCowAM1aHHmvUhiXnlRzJ25nbVV7GN7FSYztHwJ8aSDE-0fzuyzke2XVpTYIdCwC3Ig3X3Pf8d0M0fvo_fmhs037oQpuSbydw'
+        self.ExecutiveToken = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlDcllNXzdYc0JMVVBucVZnT2xWZyJ9.eyJpc3MiOiJodHRwczovL2ZzbmQta2hhbGVkLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZmRmNzU2YTA4Mjg0YjAwNmJiNGM4M2UiLCJhdWQiOiJmbnNkX2NhcHN0b25lIiwiaWF0IjoxNjA4OTEwMjUzLCJleHAiOjE2MDg5MTc0NTMsImF6cCI6IkxndU52NE9Qajd0V05lMW92MTJ1WmppT0xvUW54SndRIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZGVsZXRlOm1vdmllcyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.kLtlPK5RbFA3jOtNHOqKcWzpmY8KyO0psV2G27yeG54wQAkhvGUFjS81ZLa0f25UO8-IepIwxBj4BU68UPjQRTO6Nvqak8_bJXSxF5nJP-Lqq-Su7pSxnbVZpmw9AjeAh5dImofiPqGQZLXnUDH3nfts6ijET02WMIbJhGwBYHFQy95RkDadGLhROYKlEuYI16wnq1VbtrEbRXZPRaIZKZiVRbk9-mTXs5jlWsvpfjO7BEKfCwrWM8GZ6mh4TKpotI1v0578ZfwkEilgTELQ6HQfDFjooy5oAEodIQOF5M2QapeUodupBjLrQAjadat4b3i1eZQQOFZEr-YOOIgozQ'
 
     def tearDown(self):
         pass
@@ -53,26 +53,26 @@ class CapstoneTestCase(unittest.TestCase):
 
     # @TODO DELETE Actors
     def test_delete_actor(self):
-        response = self.client().delete('/actors/9', headers={'Authorization': 'Bearer ' + self.castingDirectorToken})
+        response = self.client().delete('/actors/6', headers={'Authorization': 'Bearer ' + self.castingDirectorToken})
         data = json.loads(response.data)
 
-        actor = Actor.query.filter(Actor.id == 1).one_or_none()
+        actor = Actor.query.filter(Actor.id == 6).one_or_none()
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data['success'], True)
-        self.assertEqual(data['deleted'], 9)
+        self.assertEqual(data['deleted'], 6)
         self.assertEqual(actor, None)
 
     # @TODO DELETE Movies
     def test_delete_movie(self):
-        response = self.client().delete('/movies/15', headers={'Authorization': 'Bearer ' + self.ExecutiveToken})
+        response = self.client().delete('/movies/7', headers={'Authorization': 'Bearer ' + self.ExecutiveToken})
         data = json.loads(response.data)
 
-        movie = Movie.query.filter(Movie.id == 15).one_or_none()
+        movie = Movie.query.filter(Movie.id == 7).one_or_none()
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data['success'], True)
-        self.assertEqual(data['deleted'], 15)
+        self.assertEqual(data['deleted'], 7)
         self.assertEqual(movie, None)
 
     # @TODO POST Actors
