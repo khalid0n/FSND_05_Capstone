@@ -9,9 +9,8 @@ class CapstoneTestCase(unittest.TestCase):
     def setUp(self):
         self.app = create_app()
         self.client = self.app.test_client
-        # self.database_name = "capstoneDB1"
-        # self.database_path = "postgres://{}@{}/{}".format('khalednasser', 'localhost:5432', self.database_name)
-        self.database_path = "postgres://ixlgpwadhntnfz:3c74f448cc176a5cf44a0536c979dd97a62ec381ba125c4543788ee3c1164f74@ec2-184-72-235-80.compute-1.amazonaws.com:5432/d9qviphab0o2hk"
+        self.database_name = "capstoneDB1"
+        self.database_path = "postgres://{}@{}/{}".format('khalednasser', 'localhost:5432', self.database_name)
         setup_db(self.app, self.database_path)
 
         with self.app.app_context():
