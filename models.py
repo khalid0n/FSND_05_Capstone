@@ -1,12 +1,12 @@
-from sqlalchemy import Column, String,Integer, create_engine
+from sqlalchemy import Column, String, Integer, create_engine
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+import os
 
-
-database_path = 'postgres://ixlgpwadhntnfz:3c74f448cc176a5cf44a0536c979dd97a62ec381ba125c4543788ee3c1164f74@ec2-184-72-235-80.compute-1.amazonaws.com:5432/d9qviphab0o2hk'
-# database_path = "postgres://{}@{}/{}".format('khalednasser', 'localhost:5432', 'capstoneDB1')
+database_path = os.environ.get('DATABASE_URL')
 
 db = SQLAlchemy()
+
 
 def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
@@ -21,7 +21,7 @@ class Movie(db.Model):
     __tablename__ = 'movies'
 
     id = Column(Integer, primary_key=True)
-    title = Column(String,)
+    title = Column(String, )
     release_date = Column(String)
 
     def __init__(self, title, release_date):

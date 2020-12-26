@@ -59,7 +59,27 @@ python3 test_app.py
 the API's endpoints testing can be imported in postman through this file `FNSD_Capstone.postman_collection.json`
 
 
- 
+
+## Roles & Associated permissions:
+1.Casting Assistant
+
+- GET `'/actors'`
+- GET `'/movies'`
+
+2.Casting Director
+
+- All *Casting Assistant* permissions.
+- POST `'/actors'`
+- DELETE `'/actors'`
+- PATCH `'/actors'`
+- PATCH `'/movies'`
+
+3.Executive Producer
+- All *Casting Director* permissions.
+- DELETE `'/movies'`
+- POST `'/movies'`
+
+
 ## API Reference
 
 #### Error Handling

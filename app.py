@@ -15,7 +15,6 @@ def create_app(test_config=None):
     def hello():
         return "HIIIIIII"
 
-    # @TODO GET Actors
     @app.route('/actors', methods=['GET'])
     @requires_auth('get:actors')
     def get_actors(jwt):
@@ -28,11 +27,10 @@ def create_app(test_config=None):
                 'actors': formatted_actors
             })
 
-        except:
+        except Exception:
             traceback.print_exc()
             abort(422)
 
-    # @TODO GET Movies
     @app.route('/movies', methods=['GET'])
     @requires_auth('get:movies')
     def get_movies(jwt):
@@ -45,11 +43,10 @@ def create_app(test_config=None):
                 'actors': formatted_movies
             })
 
-        except:
+        except Exception:
             traceback.print_exc()
             abort(422)
 
-    # @TODO DELETE Actors
     @app.route('/actors/<int:id>', methods=['DELETE'])
     @requires_auth('delete:actors')
     def delete_actors(jwt, id):
@@ -65,11 +62,10 @@ def create_app(test_config=None):
                 'deleted': id
             })
 
-        except:
+        except Exception:
             traceback.print_exc()
             abort(422)
 
-    # @TODO DELETE Movies
     @app.route('/movies/<int:id>', methods=['DELETE'])
     @requires_auth('delete:movies')
     def delete_movies(jwt, id):
@@ -85,11 +81,10 @@ def create_app(test_config=None):
                 'deleted': id
             })
 
-        except:
+        except Exception:
             traceback.print_exc()
             abort(422)
 
-    # @TODO POST Actors
     @app.route('/actors', methods=['POST'])
     @requires_auth('post:actors')
     def add_actors(jwt):
@@ -111,11 +106,10 @@ def create_app(test_config=None):
                 'gender': actor.gender
             })
 
-        except:
+        except Exception:
             traceback.print_exc()
             abort(422)
 
-    # @TODO POST Movies
     @app.route('/movies', methods=['POST'])
     @requires_auth('post:movies')
     def add_movies(jwt):
@@ -135,11 +129,10 @@ def create_app(test_config=None):
                 'release_date': movie.release_date
             })
 
-        except:
+        except Exception:
             traceback.print_exc()
             abort(422)
 
-    # @TODO PATCH Actors
     @app.route('/actors/<int:id>', methods=['PATCH'])
     @requires_auth('patch:actors')
     def update_actors(jwt, id):
@@ -169,11 +162,10 @@ def create_app(test_config=None):
                 'actor': actor.format()
             })
 
-        except:
+        except Exception:
             traceback.print_exc()
             abort(500)
 
-    # @TODO PATCH Movies
     @app.route('/movies/<int:id>', methods=['PATCH'])
     @requires_auth('patch:movies')
     def update_movies(jwt, id):
@@ -199,7 +191,7 @@ def create_app(test_config=None):
                 'actor': movie.format()
             })
 
-        except:
+        except Exception:
             traceback.print_exc()
             abort(500)
 
